@@ -21,7 +21,7 @@
   align-items: center;
   gap: var(--input-control-gap);
   border: var(--input-control-border-width) solid var(--input-control-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-4);
   background: var(--input-control-bg);
   color: var(--color-text-primary);
   padding: 0 var(--input-control-padding-inline);
@@ -176,7 +176,7 @@
   min-width: 0;
   flex: 1;
   overflow: hidden;
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   font-size: var(--text-body-14);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -197,21 +197,21 @@
 }
 
 .joker-input-field.dropdown .joker-input-icon.trailing {
-  width: var(--spacing-16);
-  min-width: var(--spacing-16);
-  height: var(--spacing-16);
-  color: var(--joker-white-50);
+  width: var(--space-16);
+  min-width: var(--space-16);
+  height: var(--space-16);
+  color: var(--color-primitive-white-50);
   transition: transform var(--motion-fast) var(--ease-standard);
 }
 
 .joker-input-field.dropdown .joker-input-icon.trailing svg {
-  width: var(--spacing-16);
-  height: var(--spacing-16);
+  width: var(--space-16);
+  height: var(--space-16);
 }
 
 .joker-dropdown-menu {
   position: absolute;
-  top: calc(100% + var(--spacing-8));
+  top: calc(100% + var(--space-8));
   right: 0;
   left: 0;
   z-index: 4;
@@ -220,11 +220,11 @@
   overflow: hidden;
   overflow-y: auto;
   border: var(--input-control-border-width) solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-4);
   background: var(--input-control-bg);
   box-shadow:
     var(--input-status-shadow-hover),
-    0 18px 42px color-mix(in srgb, var(--joker-black-900) 38%, transparent);
+    0 18px 42px color-mix(in srgb, var(--color-primitive-black-900) 38%, transparent);
 }
 
 .joker-input-field.dropdown.is-open .joker-dropdown-menu {
@@ -233,7 +233,7 @@
 
 .joker-dropdown-option {
   display: flex;
-  min-height: var(--spacing-40);
+  min-height: var(--space-40);
   align-items: center;
   border: 0;
   border-bottom: var(--input-control-border-width) solid var(--color-border-subtle);
@@ -243,7 +243,7 @@
   font-family: var(--font);
   font-size: var(--text-body-14);
   font-weight: var(--text-body-weight);
-  padding: 0 var(--spacing-16);
+  padding: 0 var(--space-16);
   text-align: left;
 }
 
@@ -253,12 +253,12 @@
 
 .joker-dropdown-option:hover {
   background: var(--input-control-bg-hover);
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
 }
 
 .joker-dropdown-option[aria-selected="true"] {
-  background: var(--joker-black-600);
-  color: var(--joker-white-50);
+  background: var(--color-primitive-black-600);
+  color: var(--color-primitive-white-50);
 }
 
 .joker-multiplier-control {
@@ -266,7 +266,7 @@
 }
 
 .joker-multiplier-control input {
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   font-size: var(--text-body-14);
 }
 
@@ -277,7 +277,7 @@
   height: 28px;
   overflow: hidden;
   border: var(--input-control-border-width) solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-4);
   background: var(--input-control-bg-hover);
 }
 
@@ -289,7 +289,7 @@
   border: 0;
   border-bottom: var(--input-control-border-width) solid var(--color-border-default);
   background: transparent;
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   cursor: pointer;
   padding: 0;
   transition:
@@ -307,8 +307,8 @@
 }
 
 .joker-multiplier-button svg {
-  width: var(--spacing-12);
-  height: var(--spacing-12);
+  width: var(--space-12);
+  height: var(--space-12);
   stroke-width: 3;
 }
 
@@ -323,7 +323,7 @@
 
 .joker-otp-group {
   display: flex;
-  gap: var(--spacing-8);
+  gap: var(--space-8);
 }
 
 .joker-otp-group span,
@@ -333,7 +333,7 @@
   height: var(--input-control-height);
   place-items: center;
   border: var(--input-control-border-width) solid var(--input-control-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-4);
   background: var(--color-bg-surface-active);
   color: var(--color-text-primary);
   font-family: var(--mono);
@@ -351,12 +351,12 @@
 .joker-otp-group span[data-filled="true"],
 .joker-otp-group input[data-filled="true"] {
   align-items: center;
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   font-family: var(--font);
   font-size: var(--text-display-d6);
   font-weight: 500;
   line-height: 1;
-  padding-top: var(--spacing-4);
+  padding-top: var(--space-4);
 }
 
 .joker-input-field.otp.focus .joker-otp-group span[data-selected="true"],

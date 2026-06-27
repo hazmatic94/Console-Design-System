@@ -159,7 +159,7 @@ function foundationTokenCount(title) {
   const counts = {
     Colors: primitiveColorFamilies.reduce((total, family) => total + family.tokens.length, 0)
       + semanticColorGroups.reduce((total, group) => total + group.tokens.length, 0),
-    Typography: 13,
+    Typography: 5,
     Spacing: spacingTokens.length,
     Radius: radiusTokens.length,
     Shadows: shadowTokens.length,
@@ -365,12 +365,12 @@ function primitiveCssVariableName(name) {
 
 function primitiveColorUsage(token, familyName) {
   if (token.base) return "Base primitive for this ramp.";
-  if (familyName === "bgWhite") return "White primitive and inverse surface value.";
-  if (familyName === "bgBlack") return "Neutral black primitive for dark surfaces, borders, and text mapping.";
-  if (familyName === "jokerGold") return "Brand gold primitive for premium accents and action mapping.";
-  if (familyName === "jokerGreen") return "Success primitive for positive feedback and completion states.";
-  if (familyName === "jokerRed") return "Error primitive for danger, validation, and destructive states.";
-  if (familyName === "jokerAlert") return "Warning primitive for caution, pending, and attention states.";
+  if (familyName === "white") return "Neutral white primitive and inverse surface value.";
+  if (familyName === "black") return "Black primitive for dark surfaces, borders, and text mapping.";
+  if (familyName === "sage") return "Focus primitive for keyboard focus, primary action emphasis, and selected states.";
+  if (familyName === "success") return "Success primitive for positive feedback and completion states.";
+  if (familyName === "warning") return "Warning primitive for caution, pending, and attention states.";
+  if (familyName === "danger") return "Danger primitive for destructive, failed, and blocking states.";
   return "Primitive colour value.";
 }
 
@@ -398,7 +398,7 @@ function spacingVariableGroup(_title, rows) {
 function spacingVariableRow(token) {
   const variable = spacingCssVariableName(token.name);
   return `
-    <article class="color-variable-row spacing-variable-row" style="--spacing-size: ${token.value}px">
+    <article class="color-variable-row spacing-variable-row" style="--space-size: ${token.value}px">
       <div class="spacing-variable-sample">
         <span aria-hidden="true"></span>
       </div>
@@ -933,8 +933,8 @@ function actionGroupPreview() {
 
 function jokerLogoPreview() {
   return `
-    <a class="joker-logo-component" href="#/installation" aria-label="Joker OS home">
-      <img src="./assets/jokerLogo.svg?v=nav" alt="Joker OS" />
+    <a class="joker-logo-component" href="#/installation" aria-label="Console home">
+      <img src="./assets/consoleLogo.png?v=nav" alt="Console" />
     </a>
   `;
 }
@@ -1759,7 +1759,7 @@ function promoCardExamples() {
     description: "Unlock rewards up to $2,500",
     ctaLabel: "How it works",
     imageSrc: "./assets/welcome-rewards.png?v=nav",
-    variant: "gold",
+    variant: "sage",
     href: "/promotions/welcome-package",
   };
 
@@ -2346,7 +2346,7 @@ function spacingGuidelineRow(scope, tokens, guidance) {
 
 function spacingTokenRow(token) {
   return `
-    <article class="spacing-token-row" style="--spacing-size: ${token.value}px">
+    <article class="spacing-token-row" style="--space-size: ${token.value}px">
       <div class="spacing-value">
         <strong>${token.value}px</strong>
         <span aria-hidden="true"></span>
@@ -2381,12 +2381,13 @@ function colorFamilyGroup(family) {
 }
 
 function colorFamilyTitle(title) {
-  if (title === "bgWhite") return "Joker White";
-  if (title === "bgBlack") return "Joker Black";
-  if (title === "jokerGreen") return "Joker Green";
-  if (title === "jokerRed") return "Joker Red";
-  if (title === "jokerAlert") return "Joker Alert";
-  return "Joker Gold";
+  if (title === "white") return "Neutral White";
+  if (title === "black") return "Black";
+  if (title === "sage") return "Sage";
+  if (title === "success") return "Success";
+  if (title === "warning") return "Warning";
+  if (title === "danger") return "Danger";
+  return title;
 }
 
 function colorSwatch(token) {
@@ -2439,29 +2440,20 @@ function semanticTokenCard(token) {
 function semanticTokenColor(value) {
   if (value === "whiteAlpha08") return { value: "rgb(255 255 255 / 0.08)", text: "light" };
   const primitive = primitiveColorTokens().find((token) => token.name === value);
-  return primitive || { value: "var(--joker-white-50)", text: "dark" };
+  return primitive || { value: "var(--color-primitive-white-50)", text: "dark" };
 }
 
 function typographyFoundation() {
-  const displayRows = [
-    { sample: "Display 72", token: "--text-display-d1", output: "500 72px/0.9 Teko", kind: "display", size: 72, weight: 500 },
-    { sample: "Display 56", token: "--text-display-d2", output: "500 56px/0.9 Teko", kind: "display", size: 56, weight: 500 },
-    { sample: "Display 48", token: "--text-display-d3", output: "500 48px/0.9 Teko", kind: "display", size: 48, weight: 500 },
-    { sample: "Display 40", token: "--text-display-d4", output: "500 40px/0.9 Teko", kind: "display", size: 40, weight: 500 },
-    { sample: "Display 32", token: "--text-display-d5", output: "500 32px/0.95 Teko", kind: "display", size: 32, weight: 500 },
-    { sample: "Display 24", token: "--text-display-d6", output: "500 24px/1 Teko", kind: "display", size: 24, weight: 500 },
-  ];
-  const bodyRows = [
-    { sample: "Body Text 18", token: "--text-body-18", output: "400 18px/1.45 Inter", kind: "body", size: 18, weight: 400 },
-    { sample: "Body Text 16", token: "--text-body-16", output: "400 16px/1.45 Inter", kind: "body", size: 16, weight: 400 },
-    { sample: "Body Text 14", token: "--text-body-14", output: "400 14px/1.45 Inter", kind: "body", size: 14, weight: 400 },
-    { sample: "Body Text 12", token: "--text-body-12", output: "400 12px/1.4 Inter", kind: "body", size: 12, weight: 400 },
-    { sample: "Body Text 10", token: "--text-body-10", output: "400 10px/1.35 Inter", kind: "body", size: 10, weight: 400 },
+  const typeScaleRows = [
+    { sample: "h1", token: "--text-h1", output: "600 32px/1.5 Inter / -0.5px", kind: "heading", size: 32, weight: 600, lineHeight: 1.5, letterSpacing: "-0.5px" },
+    { sample: "h2", token: "--text-h2", output: "600 24px/1.5 Inter / -0.5px", kind: "heading", size: 24, weight: 600, lineHeight: 1.5, letterSpacing: "-0.5px" },
+    { sample: "p1", token: "--text-p1", output: "400 14px/1.5 Inter", kind: "body", size: 14, weight: 400, lineHeight: 1.5, letterSpacing: "0px" },
+    { sample: "p2", token: "--text-p2", output: "400 16px/1.5 Inter", kind: "body", size: 16, weight: 400, lineHeight: 1.5, letterSpacing: "0px" },
+    { sample: "p3", token: "--text-p3", output: "400 12px/1.5 Inter", kind: "body", size: 12, weight: 400, lineHeight: 1.5, letterSpacing: "0px" },
   ];
 
   return `
-    ${section("Display Text", "", typographyVariableTable([typographyVariableGroup("Display Text", displayRows)]))}
-    ${section("Body Text", "", typographyVariableTable([typographyVariableGroup("Body Text", bodyRows)]))}
+    ${section("Type Scale", "", typographyVariableTable([typographyVariableGroup("Type Scale", typeScaleRows)]))}
     ${section("Code Export", "", codePanel("typography-code", "typography.css", sampleTypographyCode()))}
   `;
 }
@@ -2482,8 +2474,11 @@ function typographyVariableGroup(_title, rows) {
 
 function typographyVariableRow(row) {
   return `
-    <article class="color-variable-row typography-variable-row" style="--type-size: ${row.size}px; --type-weight: ${row.weight};">
-      <div class="typography-variable-sample ${row.kind}">${row.sample}</div>
+    <article class="color-variable-row typography-variable-row" style="--type-size: ${row.size}px; --type-weight: ${row.weight}; --type-line-height: ${row.lineHeight}; --type-letter-spacing: ${row.letterSpacing};">
+      <div class="typography-variable-sample ${row.kind}">
+        <span class="typography-sample-label">${row.sample}</span>
+        ${row.description ? `<span class="typography-sample-description">${row.description}</span>` : ""}
+      </div>
       <div class="color-variable-action typography-variable-action">
         <code>${row.token}</code>
         <button class="variable-copy-button" type="button" data-copy data-copy-value="${row.token}" data-copy-label="Copy ${row.token}" aria-label="Copy ${row.token}">
@@ -2553,9 +2548,9 @@ function tokenCard(title, token, description) {
 }
 
 function tokenBackground(title) {
-  if (title === "Primitive") return "var(--joker-alert-400)";
-  if (title === "Semantic") return "var(--joker-black-600)";
-  return "linear-gradient(135deg, var(--joker-white-50) 0 50%, var(--joker-black-300) 50% 100%)";
+  if (title === "Primitive") return "var(--color-primitive-sage-500)";
+  if (title === "Semantic") return "var(--color-primitive-black-600)";
+  return "linear-gradient(135deg, var(--color-primitive-white-50) 0 50%, var(--color-primitive-black-300) 50% 100%)";
 }
 
 function variantTile(title, description) {
@@ -2781,7 +2776,7 @@ function collectTocHeadings() {
   if (state.route === "/foundations/colors") {
     return headings.reduce((items, heading) => {
       if (heading.title === "Color Variables") return items;
-      if (heading.title === "Joker White" && !items.some((item) => item.type === "label" && item.title === "Primitives")) {
+      if (heading.title === "Neutral White" && !items.some((item) => item.type === "label" && item.title === "Primitives")) {
         const primitivesHeading = headings.find((item) => item.title === "Primitives");
         if (primitivesHeading && !items.some((item) => item.title === "Primitives")) items.push(primitivesHeading);
       }
@@ -2875,25 +2870,32 @@ function sampleColorVariableCode() {
 
 function sampleTypographyCode() {
   return `:root {
-  --font-family-display: "Teko", Impact, "Arial Narrow", sans-serif;
   --font-family-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --text-display-d1: 72px;
-  --text-display-d2: 56px;
-  --text-display-d3: 48px;
-  --text-display-d4: 40px;
-  --text-display-d5: 32px;
-  --text-display-d6: 24px;
-  --text-display-weight: 500;
-  --text-display-line-height: 0.9;
+  --text-h1: 32px;
+  --text-h1-weight: 600;
+  --text-h1-line-height: 1.5;
+  --text-h1-letter-spacing: -0.5px;
 
-  --text-body-18: 18px;
-  --text-body-16: 16px;
-  --text-body-14: 14px;
-  --text-body-12: 12px;
-  --text-body-10: 10px;
-  --text-body-weight: 400;
-  --text-body-line-height: 1.45;
+  --text-h2: 24px;
+  --text-h2-weight: 600;
+  --text-h2-line-height: 1.5;
+  --text-h2-letter-spacing: -0.5px;
+
+  --text-p1: 14px;
+  --text-p1-weight: 400;
+  --text-p1-line-height: 1.5;
+  --text-p1-letter-spacing: 0px;
+
+  --text-p2: 16px;
+  --text-p2-weight: 400;
+  --text-p2-line-height: 1.5;
+  --text-p2-letter-spacing: 0px;
+
+  --text-p3: 12px;
+  --text-p3-weight: 400;
+  --text-p3-line-height: 1.5;
+  --text-p3-letter-spacing: 0px;
 }`;
 }
 
@@ -2979,8 +2981,8 @@ function sampleDesignTokenUsage() {
   return `.card {
   background: var(--color-surface-primary);
   color: var(--color-text-primary);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-16);
+  border-radius: var(--radius-4);
+  padding: var(--space-16);
 }`;
 }
 

@@ -22,8 +22,8 @@ function InfoIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <circle cx="12" cy="12" r="10" fill="currentColor" />
-      <path d="M12 10v7" stroke="var(--joker-black-800)" strokeLinecap="round" strokeWidth="2" />
-      <circle cx="12" cy="7" r="1.2" fill="var(--joker-black-800)" />
+      <path d="M12 10v7" stroke="var(--color-primitive-black-800)" strokeLinecap="round" strokeWidth="2" />
+      <circle cx="12" cy="7" r="1.2" fill="var(--color-primitive-black-800)" />
     </svg>
   );
 }

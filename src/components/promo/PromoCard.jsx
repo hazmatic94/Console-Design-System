@@ -1,6 +1,6 @@
 import { Button } from "../ui/Button.jsx";
 
-export function PromoCard({ title, body, image, tone = "gold" }) {
+export function PromoCard({ title, body, image, tone = "sage" }) {
   return (
     <article className={`joker-promo-card joker-promo-card--${tone}`.trim()}>
       <div className="joker-promo-frame">

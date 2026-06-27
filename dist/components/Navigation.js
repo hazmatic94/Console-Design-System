@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useMemo, useState, } from "react";
 import jokerCoinSrc from "../../assets/jokerCoin.svg";
-import jokerLogoSrc from "../../assets/jokerLogo.svg";
+import consoleLogoSrc from "../../assets/consoleLogo.png";
 import userAvatarSrc from "../../assets/user.png";
 import { navigationIconSvg } from "../data/navigationSvgIcons.js";
 import { navigationItemRegistry } from "../data/navigationData.js";
@@ -98,7 +98,7 @@ function ChevronIcon() {
     return (_jsx("svg", { viewBox: "0 0 24 24", "aria-hidden": "true", focusable: "false", children: _jsx("path", { d: "m6 9 6 6 6-6", fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" }) }));
 }
 function JokerLogo({ href }) {
-    return (_jsx("a", { className: "joker-logo-component", href: href, "aria-label": "Joker OS home", children: _jsx("img", { src: jokerLogoSrc, alt: "Joker OS" }) }));
+    return (_jsx("a", { className: "joker-logo-component", href: href, "aria-label": "Console home", children: _jsx("img", { src: consoleLogoSrc, alt: "Console" }) }));
 }
 function WalletControl({ balance }) {
     return (_jsxs("div", { className: "joker-wallet-control", "aria-label": "Wallet balance", children: [_jsxs("div", { className: "joker-wallet-balance", children: [_jsx("img", { className: "joker-wallet-coin", src: jokerCoinSrc, alt: "" }), _jsx("span", { children: balance })] }), _jsx("button", { className: "joker-wallet-action", type: "button", "aria-label": "Open wallet", children: _jsx(WalletIcon, {}) })] }));

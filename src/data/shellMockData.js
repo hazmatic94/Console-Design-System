@@ -30,7 +30,7 @@ export const shellPromos = [
   {
     title: "Weekly Cashback",
     body: "Claim bonus credit on eligible game play.",
-    tone: "gold",
+    tone: "sage",
     image: "./assets/promo-vip.png",
   },
   {

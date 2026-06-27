@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import jokerCoinSrc from "../../assets/jokerCoin.svg";
-import jokerLogoSrc from "../../assets/jokerLogo.svg";
+import consoleLogoSrc from "../../assets/consoleLogo.png";
 import userAvatarSrc from "../../assets/user.png";
 import { navigationIconSvg } from "../data/navigationSvgIcons.js";
 import { navigationItemRegistry } from "../data/navigationData.js";
@@ -184,8 +184,8 @@ function ChevronIcon() {
 
 function JokerLogo({ href }: { href: string }) {
   return (
-    <a className="joker-logo-component" href={href} aria-label="Joker OS home">
-      <img src={jokerLogoSrc} alt="Joker OS" />
+    <a className="joker-logo-component" href={href} aria-label="Console home">
+      <img src={consoleLogoSrc} alt="Console" />
     </a>
   );
 }
@@ -553,7 +553,7 @@ function MobileNavigation(props: ResolvedNavigationProps) {
 
 export function Navigation({
   balance = "150,000",
-  logoHref = "#/installation",
+  logoHref = "#/foundations/colors",
   avatarSrc = userAvatarSrc,
   children,
   defaultValue,

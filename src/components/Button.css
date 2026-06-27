@@ -48,7 +48,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-8);
+  gap: var(--space-8);
   color: inherit;
   font: inherit;
   letter-spacing: 0;
@@ -125,7 +125,7 @@
   border-radius: 999px;
   background: linear-gradient(180deg, var(--button-secondary-highlight), transparent 55%), var(--button-disabled-bg);
   box-shadow: var(--button-secondary-shadow);
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   font-family: var(--font);
   font-size: var(--text-body-14);
   font-weight: var(--text-body-weight);
@@ -250,8 +250,8 @@
     color-mix(in srgb, var(--button-primary-text) 42%, transparent) 26% 45%,
     color-mix(in srgb, var(--button-primary-text) 20%, transparent) 45% 100%
   );
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--joker-black-900) calc(100% - 2px));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--joker-black-900) calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--color-primitive-black-900) calc(100% - 2px));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--color-primitive-black-900) calc(100% - 2px));
   animation: joker-button-loading-spin calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) linear infinite;
 }
 

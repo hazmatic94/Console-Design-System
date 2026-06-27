@@ -1,10 +1,10 @@
 /* Reusable component styles split from the docs globals. */
 
 .joker-promo-card {
-  --promo-accent: var(--joker-gold-700);
-  --promo-accent-hover: var(--joker-gold-400);
+  --promo-accent: var(--color-primitive-black-100);
+  --promo-accent-hover: var(--color-primitive-white-50);
   --promo-border-hover: var(--button-secondary-border-hover);
-  --promo-glow: rgb(255 222 168 / 0.1);
+  --promo-glow: color-mix(in srgb, var(--color-primitive-sage-400) 10%, transparent);
   position: relative;
   isolation: isolate;
   display: block;
@@ -12,32 +12,32 @@
   max-width: 100%;
   height: 216px;
   overflow: visible;
-  border-radius: var(--corner-rad-s);
+  border-radius: var(--radius-12);
   color: inherit;
   text-decoration: none;
 }
 
-.joker-promo-card--gold {
-  --promo-accent: var(--joker-gold-700);
-  --promo-accent-hover: var(--joker-gold-400);
-  --promo-glow: rgb(255 222 168 / 0.13);
+.joker-promo-card--sage {
+  --promo-accent: var(--color-primitive-black-100);
+  --promo-accent-hover: var(--color-primitive-white-50);
+  --promo-glow: color-mix(in srgb, var(--color-primitive-sage-400) 13%, transparent);
 }
 
 .joker-promo-card--bronze {
-  --promo-accent: var(--joker-gold-700);
-  --promo-accent-hover: var(--joker-gold-500);
+  --promo-accent: var(--color-primitive-black-100);
+  --promo-accent-hover: var(--color-primitive-black-50);
   --promo-glow: rgb(184 137 93 / 0.14);
 }
 
 .joker-promo-card--purple {
-  --promo-accent: var(--joker-alert-700);
-  --promo-accent-hover: var(--joker-alert-300);
+  --promo-accent: var(--color-primitive-sage-700);
+  --promo-accent-hover: var(--color-primitive-sage-300);
   --promo-glow: rgb(149 118 218 / 0.14);
 }
 
 .joker-promo-card--blue {
-  --promo-accent: var(--joker-green-700);
-  --promo-accent-hover: var(--joker-green-400);
+  --promo-accent: var(--color-primitive-sage-700);
+  --promo-accent-hover: var(--color-primitive-sage-400);
   --promo-glow: rgb(86 146 245 / 0.13);
 }
 
@@ -49,7 +49,7 @@
   height: 100%;
   overflow: visible;
   border-radius: inherit;
-  background: var(--joker-black-300);
+  background: var(--color-primitive-black-300);
   box-shadow:
     0 18px 40px rgb(0 0 0 / 0.28),
     0 0 0 1px rgb(255 255 255 / 0.02);
@@ -81,11 +81,11 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: calc(var(--corner-rad-s) - 3px);
+  border-radius: calc(var(--radius-12) - 3px);
   background:
-    radial-gradient(circle at 84% 16%, rgb(255 222 168 / 0.055), transparent 28%),
+    radial-gradient(circle at 84% 16%, color-mix(in srgb, var(--color-primitive-sage-400) 5.5%, transparent), transparent 28%),
     radial-gradient(circle at 18% 14%, rgb(255 255 255 / 0.024), transparent 30%),
-    linear-gradient(135deg, var(--joker-black-900) 0%, var(--joker-black-800) 58%, var(--joker-black-700) 100%);
+    linear-gradient(135deg, var(--color-primitive-black-900) 0%, var(--color-primitive-black-800) 58%, var(--color-primitive-black-700) 100%);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.04),
     inset 0 -24px 58px rgb(0 0 0 / 0.24);
@@ -102,7 +102,7 @@
   width: 280px;
   height: 240px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgb(255 222 168 / 0.12), var(--promo-glow) 38%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primitive-sage-400) 12%, transparent), var(--promo-glow) 38%, transparent 70%);
   content: "";
   filter: blur(14px);
   opacity: 0.48;
@@ -179,7 +179,7 @@
   background: var(--promo-border-hover);
   box-shadow:
     0 22px 48px rgb(0 0 0 / 0.32),
-    0 0 0 1px rgb(255 222 168 / 0.05),
+    0 0 0 1px color-mix(in srgb, var(--color-primitive-sage-400) 5%, transparent),
     0 0 28px var(--promo-glow);
 }
 
@@ -191,14 +191,14 @@
 .joker-promo-card:hover .joker-promo-inner,
 .joker-promo-card.is-hover .joker-promo-inner {
   background:
-    radial-gradient(ellipse 115% 86% at 50% 48%, rgb(255 222 168 / 0.09), transparent 62%),
+    radial-gradient(ellipse 115% 86% at 50% 48%, color-mix(in srgb, var(--color-primitive-sage-400) 9%, transparent), transparent 62%),
     radial-gradient(circle at 84% 16%, var(--promo-glow), transparent 36%),
     radial-gradient(circle at 18% 14%, rgb(255 255 255 / 0.04), transparent 34%),
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--joker-black-900) 92%, var(--promo-accent)) 0%,
-      color-mix(in srgb, var(--joker-black-800) 88%, var(--promo-accent-hover)) 56%,
-      color-mix(in srgb, var(--joker-black-700) 86%, var(--promo-accent-hover)) 100%
+      color-mix(in srgb, var(--color-primitive-black-900) 92%, var(--promo-accent)) 0%,
+      color-mix(in srgb, var(--color-primitive-black-800) 88%, var(--promo-accent-hover)) 56%,
+      color-mix(in srgb, var(--color-primitive-black-700) 86%, var(--promo-accent-hover)) 100%
     );
 }
 
@@ -229,12 +229,12 @@
   width: 58%;
   height: 100%;
   gap: 8px;
-  padding: var(--spacing-32) var(--spacing-16);
+  padding: var(--space-32) var(--space-16);
 }
 
 .joker-promo-copy h3 {
   margin: 0;
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   font-family: var(--font-display);
   font-size: var(--display-d5);
   font-weight: 500;
@@ -246,7 +246,7 @@
 
 .joker-promo-copy p {
   margin: 0;
-  color: var(--joker-black-50);
+  color: var(--color-primitive-black-50);
   font-size: var(--body-16);
   font-weight: 400;
   line-height: 1.35;
@@ -261,7 +261,7 @@
 
 .joker-promo-card:hover .joker-promo-action .joker-cta-preview.secondary,
 .joker-promo-card.is-hover .joker-promo-action .joker-cta-preview.secondary {
-  color: var(--joker-white-50);
+  color: var(--color-primitive-white-50);
   border-color: var(--button-secondary-border-hover);
   background-color: var(--button-secondary-bg-hover);
 }
@@ -281,7 +281,7 @@
   width: 74%;
   height: calc(100% + 45px);
   overflow: hidden;
-  border-radius: 0 calc(var(--corner-rad-s) - 3px) calc(var(--corner-rad-s) - 3px) 0;
+  border-radius: 0 calc(var(--radius-12) - 3px) calc(var(--radius-12) - 3px) 0;
   pointer-events: none;
 }
 
@@ -316,7 +316,7 @@
 
   .joker-promo-copy {
     width: 58%;
-    padding: var(--spacing-32) var(--spacing-16);
+    padding: var(--space-32) var(--space-16);
   }
 
   .joker-promo-copy h3 {
