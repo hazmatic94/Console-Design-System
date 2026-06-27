@@ -1,0 +1,1 @@
+{"version":3,"file":"BetAmountInput.d.ts","sourceRoot":"","sources":["../../src/components/BetAmountInput.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,YAAY,CAAC;AAG7C,MAAM,MAAM,mBAAmB,GAAG,IAAI,CAAC,UAAU,EAAE,WAAW,GAAG,SAAS,CAAC,CAAC;AAE5E,wBAAgB,cAAc,CAAC,EAC7B,KAAoB,EACpB,WAAiB,EACjB,GAAG,KAAK,EACT,EAAE,mBAAmB,+BAUrB"}

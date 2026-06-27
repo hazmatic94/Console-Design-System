@@ -1,0 +1,48 @@
+{
+  "name": "@joker/design-system",
+  "version": "0.1.8",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "src/styles/button.css",
+    "src/styles/inputs.css",
+    "src/styles/index.css",
+    "src/styles/tokens.css",
+    "src/styles/shell.css",
+    "assets/jokerCoin.svg",
+    "assets/jokerLogo.svg",
+    "assets/game-icons/fair-play.svg",
+    "assets/user.png",
+    "src/components/Button.css",
+    "src/components/Input.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./src/styles/index.css",
+    "./styles/button.css": "./src/styles/button.css",
+    "./styles/index.css": "./src/styles/index.css",
+    "./styles/inputs.css": "./src/styles/inputs.css",
+    "./styles/tokens.css": "./src/styles/tokens.css",
+    "./styles/shell.css": "./src/styles/shell.css",
+    "./components/Button.css": "./src/components/Button.css",
+    "./components/Input.css": "./src/components/Input.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,332 @@
+/* Reusable component styles split from the docs globals. */
+
+.joker-promo-card {
+  --promo-accent: var(--joker-gold-700);
+  --promo-accent-hover: var(--joker-gold-400);
+  --promo-border-hover: var(--button-secondary-border-hover);
+  --promo-glow: rgb(255 222 168 / 0.1);
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  height: 216px;
+  overflow: visible;
+  border-radius: var(--corner-rad-s);
+  color: inherit;
+  text-decoration: none;
+}
+
+.joker-promo-card--gold {
+  --promo-accent: var(--joker-gold-700);
+  --promo-accent-hover: var(--joker-gold-400);
+  --promo-glow: rgb(255 222 168 / 0.13);
+}
+
+.joker-promo-card--bronze {
+  --promo-accent: var(--joker-gold-700);
+  --promo-accent-hover: var(--joker-gold-500);
+  --promo-glow: rgb(184 137 93 / 0.14);
+}
+
+.joker-promo-card--purple {
+  --promo-accent: var(--joker-alert-700);
+  --promo-accent-hover: var(--joker-alert-300);
+  --promo-glow: rgb(149 118 218 / 0.14);
+}
+
+.joker-promo-card--blue {
+  --promo-accent: var(--joker-green-700);
+  --promo-accent-hover: var(--joker-green-400);
+  --promo-glow: rgb(86 146 245 / 0.13);
+}
+
+.joker-promo-frame {
+  position: relative;
+  z-index: 1;
+  padding: 3px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: inherit;
+  background: var(--joker-black-300);
+  box-shadow:
+    0 18px 40px rgb(0 0 0 / 0.28),
+    0 0 0 1px rgb(255 255 255 / 0.02);
+  transition:
+    background var(--motion-medium) var(--ease-standard),
+    box-shadow var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-frame::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      135deg,
+      var(--promo-border-hover) 0%,
+      color-mix(in srgb, var(--promo-border-hover) 58%, var(--promo-accent)) 42%,
+      var(--promo-border-hover) 100%
+    );
+  content: "";
+  opacity: 0;
+  transition: opacity var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(var(--corner-rad-s) - 3px);
+  background:
+    radial-gradient(circle at 84% 16%, rgb(255 222 168 / 0.055), transparent 28%),
+    radial-gradient(circle at 18% 14%, rgb(255 255 255 / 0.024), transparent 30%),
+    linear-gradient(135deg, var(--joker-black-900) 0%, var(--joker-black-800) 58%, var(--joker-black-700) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.04),
+    inset 0 -24px 58px rgb(0 0 0 / 0.24);
+  transition:
+    background var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-glow {
+  position: absolute;
+  top: -18px;
+  right: -86px;
+  bottom: auto;
+  z-index: 0;
+  width: 280px;
+  height: 240px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(255 222 168 / 0.12), var(--promo-glow) 38%, transparent 70%);
+  content: "";
+  filter: blur(14px);
+  opacity: 0.48;
+  transform: scale(1);
+  transition:
+    opacity var(--motion-medium) var(--ease-standard),
+    transform var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-inner::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.74) 0%, rgb(0 0 0 / 0.48) 48%, transparent 80%),
+    linear-gradient(0deg, rgb(0 0 0 / 0.55) 0%, transparent 58%);
+  content: "";
+  opacity: 1;
+  pointer-events: none;
+  transform: none;
+  transform-origin: left center;
+}
+
+.joker-promo-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  transform: translateX(0) scale(1);
+  transform-origin: center;
+  transition:
+    opacity var(--motion-medium) var(--ease-standard),
+    transform var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-shapes::before,
+.joker-promo-shapes::after {
+  position: absolute;
+  border: 0;
+  border-radius: 999px;
+  content: "";
+  opacity: 0.4;
+  filter: blur(0.5px);
+  transform-origin: center;
+  transition:
+    background var(--motion-base) var(--ease-standard),
+    opacity var(--motion-base) var(--ease-standard);
+}
+
+.joker-promo-shapes::before {
+  top: 22px;
+  right: 78px;
+  width: 220px;
+  height: 74px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--promo-accent) 16%, transparent), transparent);
+  transform: rotate(-18deg);
+}
+
+.joker-promo-shapes::after {
+  right: 18px;
+  bottom: -26px;
+  width: 280px;
+  height: 120px;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--promo-accent-hover) 13%, transparent), transparent 66%);
+  transform: rotate(-8deg);
+}
+
+.joker-promo-card:hover .joker-promo-frame,
+.joker-promo-card.is-hover .joker-promo-frame {
+  background: var(--promo-border-hover);
+  box-shadow:
+    0 22px 48px rgb(0 0 0 / 0.32),
+    0 0 0 1px rgb(255 222 168 / 0.05),
+    0 0 28px var(--promo-glow);
+}
+
+.joker-promo-card:hover .joker-promo-frame::before,
+.joker-promo-card.is-hover .joker-promo-frame::before {
+  opacity: 1;
+}
+
+.joker-promo-card:hover .joker-promo-inner,
+.joker-promo-card.is-hover .joker-promo-inner {
+  background:
+    radial-gradient(ellipse 115% 86% at 50% 48%, rgb(255 222 168 / 0.09), transparent 62%),
+    radial-gradient(circle at 84% 16%, var(--promo-glow), transparent 36%),
+    radial-gradient(circle at 18% 14%, rgb(255 255 255 / 0.04), transparent 34%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--joker-black-900) 92%, var(--promo-accent)) 0%,
+      color-mix(in srgb, var(--joker-black-800) 88%, var(--promo-accent-hover)) 56%,
+      color-mix(in srgb, var(--joker-black-700) 86%, var(--promo-accent-hover)) 100%
+    );
+}
+
+.joker-promo-card:hover .joker-promo-glow,
+.joker-promo-card.is-hover .joker-promo-glow {
+  opacity: 1;
+  transform: scale(1.14);
+}
+
+.joker-promo-card:hover .joker-promo-shapes,
+.joker-promo-card.is-hover .joker-promo-shapes {
+  opacity: 1;
+  transform: translateX(-8px) scale(1.08);
+}
+
+.joker-promo-card:hover .joker-promo-shapes::before,
+.joker-promo-card:hover .joker-promo-shapes::after,
+.joker-promo-card.is-hover .joker-promo-shapes::before,
+.joker-promo-card.is-hover .joker-promo-shapes::after {
+  opacity: 0.72;
+}
+
+.joker-promo-copy {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+  height: 100%;
+  gap: 8px;
+  padding: var(--spacing-32) var(--spacing-16);
+}
+
+.joker-promo-copy h3 {
+  margin: 0;
+  color: var(--joker-white-50);
+  font-family: var(--font-display);
+  font-size: var(--display-d5);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.joker-promo-copy p {
+  margin: 0;
+  color: var(--joker-black-50);
+  font-size: var(--body-16);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.joker-promo-action {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: auto;
+  pointer-events: none;
+}
+
+.joker-promo-card:hover .joker-promo-action .joker-cta-preview.secondary,
+.joker-promo-card.is-hover .joker-promo-action .joker-cta-preview.secondary {
+  color: var(--joker-white-50);
+  border-color: var(--button-secondary-border-hover);
+  background-color: var(--button-secondary-bg-hover);
+}
+
+.joker-promo-card:hover .joker-promo-action .joker-cta-preview.secondary::after,
+.joker-promo-card.is-hover .joker-promo-action .joker-cta-preview.secondary::after {
+  left: 115%;
+  opacity: 1;
+}
+
+.joker-promo-media {
+  position: absolute;
+  top: -48px;
+  right: 3px;
+  bottom: 3px;
+  z-index: 3;
+  width: 74%;
+  height: calc(100% + 45px);
+  overflow: hidden;
+  border-radius: 0 calc(var(--corner-rad-s) - 3px) calc(var(--corner-rad-s) - 3px) 0;
+  pointer-events: none;
+}
+
+.joker-promo-character {
+  position: absolute;
+  right: -34px;
+  bottom: 0;
+  z-index: 1;
+  width: auto;
+  height: 92%;
+  max-width: none;
+  object-fit: fill;
+  filter: drop-shadow(-18px 16px 22px rgb(0 0 0 / 0.34));
+  transform-origin: bottom right;
+  transition: transform var(--motion-medium) var(--ease-standard);
+}
+
+.joker-promo-card:hover .joker-promo-character,
+.joker-promo-card.is-hover .joker-promo-character {
+  transform: scale(1.05);
+}
+
+@media (max-width: 720px) {
+  .card-example-stage {
+    min-height: 300px;
+    padding: 36px 20px;
+  }
+
+  .joker-promo-card {
+    width: min(100%, 400px);
+  }
+
+  .joker-promo-copy {
+    width: 58%;
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+
+  .joker-promo-copy h3 {
+    font-size: var(--display-d5);
+  }
+
+  .joker-promo-character {
+    right: -34px;
+    bottom: 0;
+    width: auto;
+    height: 92%;
+  }
+}

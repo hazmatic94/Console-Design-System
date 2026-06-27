@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joker Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/tokens.css?v=package-navigation-refactor" />
+    <link rel="stylesheet" href="./src/styles/globals.css?v=input-token-refactor" />
+    <link rel="stylesheet" href="./src/styles/components.css?v=component-refactor" />
+    <link rel="stylesheet" href="./src/styles/shell.css?v=flush-game-shell" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <label class="nav-search sidebar-search">
+          <span class="search-symbol" data-lucide="search" aria-hidden="true"></span>
+          <input id="nav-search-mobile" type="search" placeholder="Search system" autocomplete="off" />
+        </label>
+
+        <nav id="primary-nav" class="nav-groups"></nav>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="brand">
+            <div class="brand-lockup">
+              <a class="brand-logo" href="#/installation" aria-label="Joker Design System home">
+                <img src="./assets/jokerLogo.svg?v=lo" alt="Joker OS" />
+              </a>
+              <span class="brand-system-chip">DS</span>
+            </div>
+          </div>
+          <a class="mobile-topbar-logo mobile-only" href="#/installation" aria-label="Joker Design System home">
+            <img src="./assets/jokerLogo.svg?v=lo" alt="Joker OS" />
+          </a>
+          <button id="sidebar-toggle" class="icon-button mobile-only" type="button" aria-label="Toggle navigation">
+            <span data-lucide="menu" aria-hidden="true"></span>
+          </button>
+          <div class="topbar-title">
+            <span class="section-kicker">Design System</span>
+            <strong id="topbar-page">Installation</strong>
+          </div>
+          <div class="topbar-actions">
+            <label class="nav-search topbar-search">
+              <span class="search-symbol" data-lucide="search" aria-hidden="true"></span>
+              <input id="nav-search" type="search" placeholder="Search system" autocomplete="off" />
+            </label>
+          </div>
+        </header>
+
+        <main id="content" class="content" tabindex="-1"></main>
+
+        <div id="scroll-cue" class="scroll-cue" aria-hidden="false">
+          <button class="scroll-cue-button" type="button" aria-label="Scroll down one screen">
+            <span data-lucide="chevron-down" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <aside id="toc" class="toc" aria-label="On-page navigation"></aside>
+    </div>
+
+    <script src="./app.js?v=flush-game-shell" type="module"></script>
+  </body>
+</html>
