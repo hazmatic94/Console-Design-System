@@ -924,7 +924,7 @@ function actionGroupPreview() {
 function jokerLogoPreview() {
   return `
     <a class="joker-logo-component" href="#/installation" aria-label="Console home">
-      <img src="./assets/consoleLogo.png?v=nav" alt="Console" />
+      <img src="./assets/consoleLogo.png?v=console-logo-v2" alt="Console" />
     </a>
   `;
 }

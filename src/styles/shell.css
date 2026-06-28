@@ -343,7 +343,7 @@ body:has(.joker-mobile-game-shell) {
 }
 
 .joker-game-shell-top .joker-logo-component {
-  width: 206px;
+  width: 166px;
 }
 
 .joker-game-shell-top .joker-logo-component img {
@@ -563,7 +563,7 @@ body:has(.joker-mobile-game-shell) {
 }
 
 .navigation-example.is-top-rail .joker-logo-component {
-  width: 206px;
+  width: 166px;
 }
 
 .navigation-example.is-top-rail .joker-logo-component img {
@@ -1843,7 +1843,7 @@ body:has(.joker-mobile-game-shell) {
 
 .joker-logo-component {
   display: inline-flex;
-  width: 206px;
+  width: 166px;
   height: var(--space-40);
   align-items: center;
   justify-content: flex-start;
@@ -2252,7 +2252,7 @@ body:has(.joker-mobile-game-shell) {
 }
 
 .joker-mobile-nav .joker-logo-component {
-  width: 180px;
+  width: 140px;
   height: var(--space-40);
 }
 
@@ -2419,7 +2419,7 @@ body:has(.joker-mobile-game-shell) {
   }
 
   .joker-top-rail-demo .joker-logo-component {
-    width: 160px;
+    width: 120px;
   }
 
   .joker-top-rail-demo .joker-logo-component img {
