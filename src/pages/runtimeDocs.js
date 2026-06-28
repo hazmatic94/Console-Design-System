@@ -690,6 +690,7 @@ function primaryButtonExamples() {
       </div>
       <div class="button-example-stage">
         <button class="joker-cta-preview loading button-example-control" type="button" disabled aria-busy="true" aria-label="Loading">
+          <span class="button-loading-label">Confirm</span>
           <span class="button-loading-spinner" aria-hidden="true"></span>
         </button>
       </div>
@@ -710,17 +711,6 @@ function secondaryButtonExamples() {
         </button>
       </div>
       ${codePanel("secondary-button-code", "SecondaryButton.tsx", sampleSecondaryButtonCode(), { collapsible: true })}
-    </div>
-    <div id="secondary-selected-button" class="button-example" data-toc-title="Selected" data-toc-depth="2">
-      <div class="button-example-header">
-        <h3 class="documentation-card-heading">Selected Button</h3>
-      </div>
-      <div class="button-example-stage">
-        <button class="joker-cta-preview secondary is-selected button-example-control" type="button" aria-pressed="true">
-          <span>Cancel</span>
-        </button>
-      </div>
-      ${codePanel("secondary-selected-button-code", "SecondarySelectedButton.tsx", sampleSecondarySelectedButtonCode(), { collapsible: true })}
     </div>
     <div id="secondary-disabled-button" class="button-example" data-toc-title="Disabled" data-toc-depth="2">
       <div class="button-example-header">
@@ -1980,34 +1970,20 @@ function buttonTokenRow({ label, token, output, state }) {
 function inputsComponent(page) {
   return `
     ${pageHero(page)}
-    ${section("Input Primitive", "", inputPrimitiveExamples(), "button-example-section input-example-section")}
-    ${section("Status States", "", inputStateExamples(), "button-example-section input-example-section")}
-    ${section("Select Field", "", selectFieldExamples(), "button-example-section input-example-section")}
-    ${section("Product Numeric Fields", "", productNumericFieldExamples(), "button-example-section input-example-section")}
-    ${section("Verification Field", "", verificationFieldExamples(), "button-example-section input-example-section")}
+    ${section("Profile Settings", "", profileSettingsExamples(), "button-example-section input-example-section")}
   `;
 }
 
-function inputPrimitiveExamples() {
-  return `
-    ${inputExampleCard({
-      id: "text-input-default-example",
-      tocTitle: "Default",
-      preview: liveTextInputPreview(),
-      codeId: "text-input-default-code",
-      filename: "TextInput.tsx",
-      code: sampleTextInputCode(),
-    })}
-  `;
-}
-
-function verificationFieldExamples() {
+function profileSettingsExamples() {
   return inputExampleCard({
-    id: "otp-input-example",
-    preview: liveOtpInputPreview(),
-    codeId: "otp-input-code",
-    filename: "OtpInput.tsx",
-    code: sampleOtpInputCode(),
+    id: "profile-settings-example",
+    tocTitle: "Profile Settings",
+    preview: liveProfileSettingsPreview(),
+    codeId: "profile-settings-code",
+    filename: "ProfileSettingsForm.tsx",
+    code: sampleProfileSettingsCode(),
+    stageClass: "is-form",
+    previewClass: "is-form",
   });
 }
 
@@ -2060,17 +2036,96 @@ function inputStateExamples() {
   });
 }
 
-function inputExampleCard({ id, tocTitle, preview, codeId, filename, code }) {
+function inputExampleCard({ id, tocTitle, preview, codeId, filename, code, stageClass = "", previewClass = "" }) {
   const tocAttributes = tocTitle ? ` data-toc-title="${tocTitle}" data-toc-depth="2"` : "";
 
   return `
     <div id="${id}" class="button-example input-example"${tocAttributes}>
-      <div class="button-example-stage input-example-stage">
-        <div class="input-example-preview">
+      <div class="button-example-stage input-example-stage${stageClass ? ` ${stageClass}` : ""}">
+        <div class="input-example-preview${previewClass ? ` ${previewClass}` : ""}">
           ${preview}
         </div>
       </div>
       ${codePanel(codeId, filename, code, { collapsible: true })}
+    </div>
+  `;
+}
+
+function liveProfileSettingsPreview() {
+  const timezones = [
+    { value: "Australia/Brisbane", label: "Australia/Brisbane" },
+    { value: "Australia/Sydney", label: "Australia/Sydney" },
+    { value: "Pacific/Auckland", label: "Pacific/Auckland" },
+  ];
+
+  return `
+    <div class="joker-profile-settings">
+      <div class="joker-input-field live text full-width">
+        <label class="joker-input-label" for="profile-display-name">Display Name</label>
+        <div class="joker-input-control">
+          <input id="profile-display-name" type="text" value="Harry Maher" autocomplete="name" />
+        </div>
+      </div>
+
+      <div class="joker-profile-settings-row">
+        <div class="joker-input-field live text full-width">
+          <label class="joker-input-label" for="profile-username">Username</label>
+          <div class="joker-input-control">
+            <input id="profile-username" type="text" value="@hazmatic94" autocomplete="username" />
+          </div>
+          <p class="joker-input-message joker-input-support">This will be visible publicly.</p>
+        </div>
+
+        <div class="joker-input-field live dropdown full-width" data-dropdown-field data-value="Australia/Brisbane">
+          <label class="joker-input-label" id="profile-timezone-label">Timezone</label>
+          <div class="joker-dropdown-anchor">
+            <button
+              class="joker-input-control joker-dropdown-control"
+              type="button"
+              data-dropdown-toggle
+              aria-labelledby="profile-timezone-label"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span class="joker-dropdown-value" data-dropdown-value>${timezones[0].label}</span>
+              <span class="joker-input-icon trailing">${lucideIcon("chevron-down")}</span>
+            </button>
+            <div class="joker-dropdown-menu" role="listbox" aria-labelledby="profile-timezone-label">
+              ${timezones.map((option, index) => `
+                <button
+                  class="joker-dropdown-option"
+                  type="button"
+                  role="option"
+                  data-dropdown-option="${option.value}"
+                  aria-selected="${index === 0 ? "true" : "false"}"
+                >${option.label}</button>
+              `).join("")}
+            </div>
+          </div>
+          <p class="joker-input-message joker-input-support" aria-hidden="true"></p>
+        </div>
+      </div>
+
+      <div class="joker-input-field live textarea full-width">
+        <label class="joker-input-label" for="profile-bio">Bio</label>
+        <div class="joker-input-control">
+          <textarea id="profile-bio" rows="3">Building systems and products...</textarea>
+        </div>
+      </div>
+
+      <label class="joker-profile-checkbox">
+        <input type="checkbox" checked />
+        <span>Public profile</span>
+      </label>
+
+      <div class="joker-profile-settings-actions">
+        <button class="joker-cta-preview default" type="button">
+          <span>Save Changes</span>
+        </button>
+        <button class="joker-cta-preview secondary" type="button">
+          <span>Cancel</span>
+        </button>
+      </div>
     </div>
   `;
 }
@@ -2084,27 +2139,29 @@ function liveDropdownInputPreview() {
   return `
     <div class="joker-input-field live dropdown" data-dropdown-field data-value="1">
       <label class="joker-input-label" id="joker-dropdown-label">Number of mines</label>
-      <button
-        class="joker-input-control joker-dropdown-control"
-        type="button"
-        data-dropdown-toggle
-        aria-labelledby="joker-dropdown-label"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="joker-dropdown-value" data-dropdown-value>${options[0].label}</span>
-        <span class="joker-input-icon trailing">${lucideIcon("chevron-down")}</span>
-      </button>
-      <div class="joker-dropdown-menu" role="listbox" aria-labelledby="joker-dropdown-label">
-        ${options.map((option, index) => `
-          <button
-            class="joker-dropdown-option"
-            type="button"
-            role="option"
-            data-dropdown-option="${option.value}"
-            aria-selected="${index === 0 ? "true" : "false"}"
-          >${option.label}</button>
-        `).join("")}
+      <div class="joker-dropdown-anchor">
+        <button
+          class="joker-input-control joker-dropdown-control"
+          type="button"
+          data-dropdown-toggle
+          aria-labelledby="joker-dropdown-label"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+        >
+          <span class="joker-dropdown-value" data-dropdown-value>${options[0].label}</span>
+          <span class="joker-input-icon trailing">${lucideIcon("chevron-down")}</span>
+        </button>
+        <div class="joker-dropdown-menu" role="listbox" aria-labelledby="joker-dropdown-label">
+          ${options.map((option, index) => `
+            <button
+              class="joker-dropdown-option"
+              type="button"
+              role="option"
+              data-dropdown-option="${option.value}"
+              aria-selected="${index === 0 ? "true" : "false"}"
+            >${option.label}</button>
+          `).join("")}
+        </div>
       </div>
     </div>
   `;
@@ -2167,27 +2224,6 @@ function liveBetAmountInputPreview() {
   `;
 }
 
-function liveOtpInputPreview() {
-  return `
-    <div class="joker-input-field live otp">
-      <label class="joker-input-label" for="joker-live-otp-1">Verification code</label>
-      <div class="joker-otp-group" aria-label="Verification code">
-        ${Array.from({ length: 4 }).map((_, index) => `
-          <input
-            id="joker-live-otp-${index + 1}"
-            data-otp-input
-            type="text"
-            inputmode="numeric"
-            autocomplete="one-time-code"
-            maxlength="1"
-            aria-label="Digit ${index + 1}"
-          />
-        `).join("")}
-      </div>
-    </div>
-  `;
-}
-
 function inputRowTable(rows) {
   return `
     <div class="input-token-table">
@@ -2244,19 +2280,16 @@ function inputTokenRow({ sample, token, output, label = "" }) {
 }
 
 function inputPreview(variant, state = "default") {
-  const label = variant === "currency" || variant === "prefix" ? "Bet amount" : variant === "otp" ? "Verification code" : variant === "password" || variant === "suffix" ? "Password" : variant === "search" ? "Search" : "Field Label";
+  const label = variant === "currency" || variant === "prefix" ? "Bet amount" : variant === "password" || variant === "suffix" ? "Password" : variant === "search" ? "Search" : "Field Label";
   const value = state === "default" || state === "hover" || state === "focus" || state === "disabled" ? "Placeholder" : state === "warning" ? "Check amount" : state === "error" ? "Invalid value" : "Valid value";
   const message = state === "warning" ? "Review before continuing" : state === "error" ? "Error message" : state === "success" ? "Looks good" : "";
   const prefix = variant === "currency" || variant === "prefix" ? "coin" : variant === "password" || variant === "suffix" ? "lock" : variant === "search" ? "search" : "";
   const suffix = variant === "password" || variant === "suffix" ? "eye" : "";
-  const otpValues = state === "focus" ? ["*", "2", "", ""] : ["*", "", "", ""];
-  const control = variant === "otp"
-    ? `<div class="joker-otp-group">${otpValues.map((digit, index) => `<span${state === "focus" && index === 1 ? ' data-selected="true"' : ""}${digit === "*" ? ' data-filled="true"' : ""}>${digit}</span>`).join("")}</div>`
-    : `<div class="joker-input-control">
-        ${prefix ? `<span class="joker-input-icon">${prefix === "coin" ? '<img src="./assets/jokerCoin.svg" alt="" />' : lucideIcon(prefix)}</span>` : ""}
-        <span class="joker-input-placeholder">${value}</span>
-        ${suffix ? `<span class="joker-input-icon trailing">${lucideIcon(suffix)}</span>` : ""}
-      </div>`;
+  const control = `<div class="joker-input-control">
+    ${prefix ? `<span class="joker-input-icon">${prefix === "coin" ? '<img src="./assets/jokerCoin.svg" alt="" />' : lucideIcon(prefix)}</span>` : ""}
+    <span class="joker-input-placeholder">${value}</span>
+    ${suffix ? `<span class="joker-input-icon trailing">${lucideIcon(suffix)}</span>` : ""}
+  </div>`;
 
   return `
     <div class="joker-input-field ${state} ${variant}">
@@ -2786,7 +2819,7 @@ function collectTocHeadings() {
   }
 
   if (state.route === "/components/inputs") {
-    const hiddenInputAnchors = new Set(["otp-input-example", "input-states-example"]);
+    const hiddenInputAnchors = new Set(["input-states-example"]);
     return headings.filter((heading) => !hiddenInputAnchors.has(heading.id));
   }
 
@@ -3038,14 +3071,6 @@ export function SecondaryFullWidthButton() {
 }`;
 }
 
-function sampleSecondarySelectedButtonCode() {
-  return `import { Button } from "@joker/design-system";
-
-export function SecondarySelectedButton() {
-  return <Button label="Cancel" variant="secondary" selected />;
-}`;
-}
-
 function sampleSecondaryDisabledButtonCode() {
   return `import { Button } from "@joker/design-system";
 
@@ -3091,6 +3116,37 @@ function sampleInputCode() {
 
 export function AmountField() {
   return <BetAmountInput placeholder="0" />;
+}`;
+}
+
+function sampleProfileSettingsCode() {
+  return `import { Button, Input } from "@joker/design-system";
+
+export function ProfileSettingsForm() {
+  return (
+    <form className="joker-profile-settings">
+      <Input label="Display Name" defaultValue="Harry Maher" fullWidth autoComplete="name" />
+      <div className="joker-profile-settings-row">
+        <Input
+          label="Username"
+          defaultValue="@hazmatic94"
+          helperText="This will be visible publicly."
+          fullWidth
+          autoComplete="username"
+        />
+        <Input label="Timezone" defaultValue="Australia/Brisbane" fullWidth />
+      </div>
+      <Input label="Bio" defaultValue="Building systems and products..." fullWidth />
+      <label className="joker-profile-checkbox">
+        <input type="checkbox" defaultChecked />
+        <span>Public profile</span>
+      </label>
+      <div className="joker-profile-settings-actions">
+        <Button label="Save Changes" variant="primary" />
+        <Button label="Cancel" variant="secondary" />
+      </div>
+    </form>
+  );
 }`;
 }
 
@@ -3175,20 +3231,6 @@ export function BetAmountInputExample() {
       label="Bet amount"
       placeholder="0"
       message="Numbers only"
-    />
-  );
-}`;
-}
-
-function sampleOtpInputCode() {
-  return `import { OtpInput } from "@joker/design-system";
-
-export function OtpInputExample() {
-  return (
-    <OtpInput
-      label="Verification code"
-      length={4}
-      mask
     />
   );
 }`;

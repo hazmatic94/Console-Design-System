@@ -140,20 +140,19 @@ export const buttonStateTokens = [
 export const buttonFoundationTokens = [
   { label: "Primary height", token: "--button-height", output: "36px" },
   { label: "Primary min width", token: "--button-primary-min-width", output: "auto" },
-  { label: "Secondary height", token: "--button-secondary-height", output: "40px" },
+  { label: "Secondary height", token: "--button-secondary-height", output: "36px" },
   { label: "Radius", token: "--button-radius", output: "radius 8" },
   { label: "Horizontal padding", token: "--button-padding-inline", output: "space 12" },
   { label: "Primary typography", token: "--text-p1", output: "p1 / Inter 14px / 400" },
   { label: "Secondary typography", token: "--text-p1", output: "p1 / Inter 14px / 400" },
   { label: "Duration", token: "--button-transition-duration", output: "100ms" },
-  { label: "Easing", token: "--button-transition-ease", output: "cubic-bezier(0.2, 0, 0, 1)" },
+  { label: "Easing", token: "--button-transition-ease", output: "cubic-bezier(0, 0, 0.2, 1)" },
   { label: "Press", token: "--button-press-transform", output: "translateY(1px) scale(0.99)" },
 ];
 
 export const inputVariantRows = [
   { label: "Input", token: "Input", output: "Single-line value entry with optional prefix and suffix slots.", variant: "text", status: "first-class" },
   { label: "Dropdown", token: "Select", output: "Single-value option selection for constrained field choices.", variant: "dropdown", status: "first-class" },
-  { label: "OTP", token: "OtpInput", output: "Segmented verification code entry with paste, focus advance, and attempt messaging.", variant: "otp", status: "first-class" },
 ];
 
 export const inputStateRows = [
@@ -289,7 +288,7 @@ export const semanticColorGroups = [
 
 export const componentSummaries = {
   Buttons: "Action controls for commands, navigation, confirmation, and destructive product flows.",
-  Inputs: "Field patterns for value entry, validation, slotted prefixes, and verification workflows.",
+  Inputs: "Field patterns for value entry, validation, and profile-style form layouts.",
   Navigation: "Product navigation patterns for top bars, side rails, active states, and primary wayfinding.",
   "Game Header Rail": "Game-level header rail for title, game identity, info affordance, and fair play access.",
   Cards: "Contained surfaces for grouped content, summary objects, previews, and repeated product records.",

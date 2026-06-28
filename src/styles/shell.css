@@ -637,7 +637,7 @@ body:has(.joker-mobile-game-shell) {
 }
 
 .joker-betting-panel {
-  --input-control-border: var(--color-border-default);
+  --input-control-border: var(--button-secondary-border);
   --input-control-bg: var(--color-primitive-black-800);
   --input-control-bg-hover: var(--color-primitive-black-700);
   --input-control-height: var(--input-control-height-docs);
@@ -708,15 +708,17 @@ body:has(.joker-mobile-game-shell) {
 }
 
 .joker-bet-field-row .joker-input-label {
-  font-size: var(--text-body-12);
+  font-size: var(--text-p3);
+  font-weight: var(--text-p3-weight);
+  line-height: var(--text-p3-line-height);
 }
 
 .joker-betting-panel .joker-bet-field > .joker-input-label {
-  color: var(--color-primitive-black-50);
+  color: var(--input-label-text);
   font-family: var(--font);
-  font-size: var(--text-body-12);
-  font-weight: var(--text-body-weight);
-  line-height: var(--text-body-line-height);
+  font-size: var(--text-p3);
+  font-weight: var(--text-p3-weight);
+  line-height: var(--text-p3-line-height);
 }
 
 .joker-bet-field-row span {

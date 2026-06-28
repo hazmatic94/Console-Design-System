@@ -266,12 +266,6 @@
   background-color: var(--button-secondary-bg-hover);
 }
 
-.joker-promo-card:hover .joker-promo-action .joker-cta-preview.secondary::after,
-.joker-promo-card.is-hover .joker-promo-action .joker-cta-preview.secondary::after {
-  left: 115%;
-  opacity: 1;
-}
-
 .joker-promo-media {
   position: absolute;
   top: -48px;

@@ -62,43 +62,30 @@
   text-transform: inherit;
 }
 
-.joker-button::after {
-  position: absolute;
-  top: -70%;
-  bottom: -70%;
-  left: -55%;
-  z-index: 0;
-  width: 38%;
-  background: linear-gradient(90deg, transparent, var(--button-shine-color), transparent);
-  content: "";
-  opacity: 0;
-  pointer-events: none;
-  transform: skewX(-22deg);
-  transition:
-    left calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) var(--ease-emphasized),
-    opacity var(--motion-instant) ease;
-}
-
 .joker-button--primary {
   height: var(--button-height);
   min-width: min(var(--button-primary-min-width), 100%);
+  border-color: var(--button-primary-border);
   background:
     linear-gradient(180deg, var(--button-primary-highlight), transparent 48%),
     var(--button-primary-bg);
   box-shadow: var(--button-primary-shadow);
   color: var(--button-primary-text);
-  font-family: var(--font-display);
-  font-size: var(--text-display-d6);
-  font-weight: var(--text-display-weight);
-  line-height: var(--text-display-line-height-compact);
+  font-family: var(--font);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+  padding: var(--button-padding-top) var(--button-padding-inline) var(--button-padding-bottom);
+  text-transform: none;
 }
 
 .joker-button--primary .joker-button__content,
 .joker-button--primary .joker-button__content > * {
-  font-family: var(--font-display);
-  font-size: var(--text-display-d6);
-  font-weight: var(--text-display-weight);
-  line-height: var(--text-display-line-height-compact);
+  font-family: var(--font);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+  text-transform: none;
 }
 
 .joker-button--primary:not(:disabled):hover {
@@ -109,11 +96,6 @@
   box-shadow: var(--button-primary-shadow-hover);
 }
 
-.joker-button--primary:not(:disabled):hover::after {
-  left: 115%;
-  opacity: 1;
-}
-
 .joker-button--full-width {
   width: 100%;
 }
@@ -121,22 +103,28 @@
 .joker-button--secondary {
   height: var(--button-secondary-height);
   min-height: 0;
-  border-color: var(--button-disabled-border);
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--button-secondary-highlight), transparent 55%), var(--button-disabled-bg);
+  border-color: var(--button-secondary-border);
+  border-radius: var(--button-radius);
+  background: var(--button-secondary-bg);
   box-shadow: var(--button-secondary-shadow);
-  color: var(--color-primitive-white-50);
+  color: var(--button-secondary-text);
   font-family: var(--font);
-  font-size: var(--text-body-14);
-  font-weight: var(--text-body-weight);
-  line-height: var(--text-body-line-height);
-  padding: 0 var(--button-padding-inline);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+  padding: var(--button-padding-top) var(--button-padding-inline) var(--button-padding-bottom);
   text-transform: none;
   white-space: nowrap;
 }
 
 .joker-button--secondary .joker-button__content,
-.joker-button--secondary .joker-button__content > *,
+.joker-button--secondary .joker-button__content > * {
+  font-family: var(--font);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+}
+
 .joker-button--ghost .joker-button__content,
 .joker-button--ghost .joker-button__content > * {
   font-family: var(--font);
@@ -147,21 +135,16 @@
 
 .joker-button--secondary:not(:disabled):hover {
   border-color: var(--button-secondary-border-hover-contrast);
-  background: linear-gradient(180deg, var(--button-secondary-highlight-hover), transparent 62%), var(--button-secondary-bg-hover);
+  background: var(--button-secondary-bg-hover);
   box-shadow: var(--button-secondary-shadow-hover);
 }
 
 .joker-button--secondary.joker-button--selected,
 .joker-button--secondary.joker-button--selected:not(:disabled):hover {
   border-color: var(--button-secondary-border-selected);
-  background: linear-gradient(180deg, var(--button-secondary-highlight-selected), transparent 60%), var(--button-secondary-bg);
+  background: var(--button-secondary-bg);
   box-shadow: var(--button-secondary-shadow-selected);
   color: var(--button-secondary-text);
-}
-
-.joker-button--secondary:not(:disabled):hover::after {
-  left: 115%;
-  opacity: 1;
 }
 
 .joker-button--ghost {
@@ -185,10 +168,6 @@
 
 .joker-button--ghost:not(:disabled):hover {
   color: var(--button-ghost-text-hover);
-}
-
-.joker-button--ghost::after {
-  display: none;
 }
 
 .joker-button:not(:disabled):active {
@@ -229,9 +208,9 @@
 
 .joker-button--secondary.joker-button--loading {
   border-color: var(--button-secondary-border);
-  background: linear-gradient(180deg, var(--button-secondary-highlight-selected), transparent 60%), var(--button-secondary-bg);
+  background: var(--button-secondary-bg);
   box-shadow: var(--button-secondary-shadow-loading);
-  color: var(--color-action-primary);
+  color: var(--button-secondary-text);
   opacity: 0.76;
 }
 
@@ -242,24 +221,24 @@
 .joker-button__loader {
   position: absolute;
   z-index: 1;
-  width: 26px;
-  height: 26px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
   border-radius: 50%;
   background: conic-gradient(
     var(--button-primary-text) 0 26%,
     color-mix(in srgb, var(--button-primary-text) 42%, transparent) 26% 45%,
     color-mix(in srgb, var(--button-primary-text) 20%, transparent) 45% 100%
   );
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--color-primitive-black-900) calc(100% - 2px));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), var(--color-primitive-black-900) calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--border-width-default) - var(--border-width-default)), var(--color-primitive-black-900) calc(100% - var(--border-width-default)));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--border-width-default) - var(--border-width-default)), var(--color-primitive-black-900) calc(100% - var(--border-width-default)));
   animation: joker-button-loading-spin calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) linear infinite;
 }
 
 .joker-button--secondary .joker-button__loader {
   background: conic-gradient(
-    var(--color-action-primary) 0 26%,
-    var(--color-action-primary-active) 26% 45%,
-    color-mix(in srgb, var(--color-action-primary) 18%, transparent) 45% 100%
+    var(--button-secondary-text) 0 26%,
+    color-mix(in srgb, var(--button-secondary-text) 42%, transparent) 26% 45%,
+    color-mix(in srgb, var(--button-secondary-text) 20%, transparent) 45% 100%
   );
 }
 

@@ -83,38 +83,40 @@ export function Select({
   return (
     <div className={fieldClassName}>
       {label && <label className="joker-input-label" id={`${selectId}-label`}>{label}</label>}
-      <button
-        {...props}
-        className="joker-input-control joker-dropdown-control"
-        type="button"
-        disabled={disabled}
-        aria-labelledby={label ? `${selectId}-label` : undefined}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        aria-controls={listboxId}
-        aria-describedby={visibleMessage ? messageId : undefined}
-        aria-invalid={resolvedStatus === "error" || undefined}
-        onClick={(event) => {
-          props.onClick?.(event);
-          setIsOpen((open) => !open);
-        }}
-      >
-        <span className="joker-dropdown-value">{selectedOption?.label ?? placeholder}</span>
-        <span className="joker-input-icon trailing"><ChevronDownIcon /></span>
-      </button>
-      <div className="joker-dropdown-menu" id={listboxId} role="listbox" aria-labelledby={label ? `${selectId}-label` : undefined}>
-        {options.map((option) => (
-          <button
-            className="joker-dropdown-option"
-            type="button"
-            role="option"
-            key={option.value}
-            aria-selected={option.value === selectedValue}
-            onClick={() => handleSelect(option.value)}
-          >
-            {option.label}
-          </button>
-        ))}
+      <div className="joker-dropdown-anchor">
+        <button
+          {...props}
+          className="joker-input-control joker-dropdown-control"
+          type="button"
+          disabled={disabled}
+          aria-labelledby={label ? `${selectId}-label` : undefined}
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          aria-controls={listboxId}
+          aria-describedby={visibleMessage ? messageId : undefined}
+          aria-invalid={resolvedStatus === "error" || undefined}
+          onClick={(event) => {
+            props.onClick?.(event);
+            setIsOpen((open) => !open);
+          }}
+        >
+          <span className="joker-dropdown-value">{selectedOption?.label ?? placeholder}</span>
+          <span className="joker-input-icon trailing"><ChevronDownIcon /></span>
+        </button>
+        <div className="joker-dropdown-menu" id={listboxId} role="listbox" aria-labelledby={label ? `${selectId}-label` : undefined}>
+          {options.map((option) => (
+            <button
+              className="joker-dropdown-option"
+              type="button"
+              role="option"
+              key={option.value}
+              aria-selected={option.value === selectedValue}
+              onClick={() => handleSelect(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
       </div>
       {visibleMessage && (
         <span

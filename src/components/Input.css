@@ -10,9 +10,9 @@
 
 .joker-input-label {
   color: var(--input-label-text);
-  font-size: var(--text-body-12);
-  font-weight: var(--text-body-weight);
-  line-height: var(--text-body-line-height);
+  font-size: var(--text-p3);
+  font-weight: var(--text-p3-weight);
+  line-height: var(--text-p3-line-height);
 }
 
 .joker-input-control {
@@ -21,7 +21,7 @@
   align-items: center;
   gap: var(--input-control-gap);
   border: var(--input-control-border-width) solid var(--input-control-border);
-  border-radius: var(--radius-4);
+  border-radius: var(--radius-8);
   background: var(--input-control-bg);
   color: var(--color-text-primary);
   padding: 0 var(--input-control-padding-inline);
@@ -39,13 +39,41 @@
   background: transparent;
   color: var(--color-text-primary);
   font: inherit;
-  font-size: var(--text-body-14);
-  line-height: 1;
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
   padding: 0;
 }
 
 .joker-input-control input::placeholder {
   color: var(--input-placeholder-text);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+}
+
+.joker-input-control textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: calc(var(--input-control-height) + var(--space-16));
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
+  line-height: var(--text-p1-line-height);
+  resize: vertical;
+  padding: 0;
+}
+
+.joker-input-field.textarea .joker-input-control {
+  height: auto;
+  min-height: calc(var(--input-control-height) + var(--space-16));
+  align-items: flex-start;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
 }
 
 .joker-input-icon {
@@ -76,6 +104,7 @@
   font-size: var(--text-body-12);
   font-weight: var(--text-body-weight);
   line-height: var(--text-body-line-height);
+  margin-top: calc(var(--input-support-gap) - var(--input-field-gap));
 }
 
 .joker-input-field:not(.disabled):hover .joker-input-control,
@@ -209,9 +238,16 @@
   height: var(--space-16);
 }
 
+.joker-dropdown-anchor {
+  position: relative;
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+}
+
 .joker-dropdown-menu {
   position: absolute;
-  top: calc(100% + var(--space-8));
+  top: calc(100% + var(--dropdown-menu-offset));
   right: 0;
   left: 0;
   z-index: 4;
@@ -219,8 +255,8 @@
   max-height: 220px;
   overflow: hidden;
   overflow-y: auto;
-  border: var(--input-control-border-width) solid var(--color-border-default);
-  border-radius: var(--radius-4);
+  border: var(--input-control-border-width) solid var(--input-control-border);
+  border-radius: var(--radius-8);
   background: var(--input-control-bg);
   box-shadow:
     var(--input-status-shadow-hover),
@@ -236,7 +272,7 @@
   min-height: var(--space-40);
   align-items: center;
   border: 0;
-  border-bottom: var(--input-control-border-width) solid var(--color-border-subtle);
+  border-bottom: var(--input-control-border-width) solid var(--input-control-border);
   background: transparent;
   color: var(--color-text-secondary);
   cursor: pointer;
@@ -276,8 +312,8 @@
   min-width: 34px;
   height: 28px;
   overflow: hidden;
-  border: var(--input-control-border-width) solid var(--color-border-default);
-  border-radius: var(--radius-4);
+  border: var(--input-control-border-width) solid var(--input-control-border);
+  border-radius: var(--radius-8);
   background: var(--input-control-bg-hover);
 }
 
@@ -287,7 +323,7 @@
   height: var(--input-icon-size);
   place-items: center;
   border: 0;
-  border-bottom: var(--input-control-border-width) solid var(--color-border-default);
+  border-bottom: var(--input-control-border-width) solid var(--input-control-border);
   background: transparent;
   color: var(--color-primitive-white-50);
   cursor: pointer;
@@ -333,7 +369,7 @@
   height: var(--input-control-height);
   place-items: center;
   border: var(--input-control-border-width) solid var(--input-control-border);
-  border-radius: var(--radius-4);
+  border-radius: var(--radius-8);
   background: var(--color-bg-surface-active);
   color: var(--color-text-primary);
   font-family: var(--mono);
