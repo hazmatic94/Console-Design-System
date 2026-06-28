@@ -138,14 +138,14 @@ export const buttonStateTokens = [
 ];
 
 export const buttonFoundationTokens = [
-  { label: "Primary height", token: "--button-height", output: "48px" },
-  { label: "Primary min width", token: "--button-primary-min-width", output: "272px" },
+  { label: "Primary height", token: "--button-height", output: "36px" },
+  { label: "Primary min width", token: "--button-primary-min-width", output: "auto" },
   { label: "Secondary height", token: "--button-secondary-height", output: "40px" },
-  { label: "Radius", token: "--button-radius", output: "4px" },
-  { label: "Horizontal padding", token: "--button-padding-inline", output: "spacing 24" },
-  { label: "Primary typography", token: "--text-h2", output: "h2 / Inter 24px / 600" },
+  { label: "Radius", token: "--button-radius", output: "radius 8" },
+  { label: "Horizontal padding", token: "--button-padding-inline", output: "space 12" },
+  { label: "Primary typography", token: "--text-p1", output: "p1 / Inter 14px / 400" },
   { label: "Secondary typography", token: "--text-p1", output: "p1 / Inter 14px / 400" },
-  { label: "Duration", token: "--button-transition-duration", output: "120ms" },
+  { label: "Duration", token: "--button-transition-duration", output: "100ms" },
   { label: "Easing", token: "--button-transition-ease", output: "cubic-bezier(0.2, 0, 0, 1)" },
   { label: "Press", token: "--button-press-transform", output: "translateY(1px) scale(0.99)" },
 ];

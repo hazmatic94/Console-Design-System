@@ -2234,11 +2234,11 @@ code {
   box-shadow: var(--button-primary-shadow-framed);
   color: var(--button-primary-text);
   cursor: pointer;
-  font-family: var(--font-display);
-  font-size: var(--text-display-d6);
-  font-weight: var(--text-display-weight);
+  font-family: var(--font);
+  font-size: var(--text-p1);
+  font-weight: var(--text-p1-weight);
   letter-spacing: 0;
-  line-height: var(--text-display-line-height-compact);
+  line-height: var(--text-p1-line-height);
   overflow: hidden;
   padding: var(--button-padding-top) var(--button-padding-inline) var(--button-padding-bottom);
   transition:
@@ -2247,24 +2247,38 @@ code {
     color var(--button-transition-duration) var(--button-transition-ease),
     box-shadow var(--button-transition-duration) var(--button-transition-ease),
     transform var(--button-transition-duration) var(--button-transition-ease);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .joker-cta-preview::after {
   position: absolute;
-  top: -70%;
-  bottom: -70%;
-  left: -55%;
+  inset: 0;
   z-index: 0;
-  width: 38%;
-  background: linear-gradient(90deg, transparent, var(--button-shine-color), transparent);
+  padding: var(--border-width-default);
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0turn,
+    transparent 0turn,
+    transparent 0.08turn,
+    var(--button-border-reflection) 0.14turn,
+    transparent 0.22turn,
+    transparent 1turn
+  );
   content: "";
   opacity: 0;
   pointer-events: none;
-  transform: skewX(-22deg);
+  transform: rotate(-110deg);
+  mask:
+    linear-gradient(var(--color-primitive-black-900) 0 0) content-box,
+    linear-gradient(var(--color-primitive-black-900) 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(var(--color-primitive-black-900) 0 0) content-box,
+    linear-gradient(var(--color-primitive-black-900) 0 0);
+  -webkit-mask-composite: xor;
   transition:
-    left calc(var(--motion-slow) + var(--motion-slow) + var(--motion-slow) + var(--motion-slow)) var(--ease-emphasized),
-    opacity var(--motion-instant) ease;
+    transform calc(var(--motion-slow) + var(--motion-fast)) var(--ease-emphasized),
+    opacity var(--motion-fast) var(--ease-standard);
 }
 
 .joker-cta-preview > span,
@@ -2283,9 +2297,10 @@ code {
   transform: none;
 }
 
-.joker-cta-preview.default:hover::after {
-  left: 115%;
-  opacity: 1;
+.joker-cta-preview.default:hover::after,
+.joker-cta-preview.hover::after {
+  opacity: 0.28;
+  transform: rotate(140deg);
 }
 
 .joker-cta-preview.full-width {
@@ -2335,8 +2350,8 @@ code {
 }
 
 .joker-cta-preview.secondary:not(:disabled):hover::after {
-  left: 115%;
-  opacity: 1;
+  opacity: 0.28;
+  transform: rotate(140deg);
 }
 
 .joker-cta-preview.secondary:not(:disabled):active {
